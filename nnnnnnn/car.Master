@@ -1,0 +1,270 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="car.master.cs" Inherits="nnnnnnn.car" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Rent A Car</title>
+  <style>/* General */
+body, html {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f8ff; /* Light blue background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+#form1 {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ------------------------------ */
+/*         NAVBAR STYLING         */
+/* ------------------------------ */
+.navbar {
+    background: rgba(0, 50, 120, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    padding: 12px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    gap: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Site Name */
+.site-name {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-right: 30px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    letter-spacing: 1px;
+}
+
+/* Normal links */
+.navbar a,
+.navbar-right a,
+.navbar-right button {
+    color: white;
+    font-size: 16px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(5px);
+}
+
+/* Hover */
+.navbar a:hover,
+.navbar-right a:hover,
+.navbar-right button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px);
+}
+
+/* Right section */
+.navbar-right {
+    margin-left: auto;
+    display: flex;
+    gap: 12px;
+}
+
+/* ------------------------------ */
+/*            FOOTER              */
+/* ------------------------------ */
+.footer {
+    background-color: #003b80; /* Deep blue */
+    color: white;
+    padding: 25px 20px;
+    font-size: 13px;
+    margin-top: auto;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* Footer headings */
+.footer-section h3 {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #66aaff;
+    padding-bottom: 4px;
+}
+
+/* Footer links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 6px;
+}
+
+.footer-links a {
+    color: #dfeaff;
+    transition: 0.3s;
+    font-size: 13px;
+}
+
+.footer-links a:hover {
+    color: #99ccff;
+}
+
+/* Social icons */
+.social-links {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.social-links a {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background-color: #0054b8;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    color: white;
+    transition: 0.3s;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.social-links a:hover {
+    background-color: #66aaff;
+}
+
+/* Copyright */
+.copyright {
+    text-align: center;
+    margin-top: 15px;
+    border-top: 1px solid #0054b8;
+    padding-top: 8px;
+    color: #cbd9ff;
+    font-size: 12px;
+}
+
+/* ------------------------------ */
+/*          RESPONSIVE            */
+/* ------------------------------ */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .site-name {
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        align-items: flex-start;
+    }
+    .navbar-right {
+        margin-left: 0;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+</style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        
+        <!-- Header/Navigation -->
+        <!-- Header/Navigation -->
+<div class="navbar">
+    <div class="site-name">EzRentals</div>
+
+    <a href="Home.aspx">Home</a>
+    <a href="RentACar.aspx">Rent A Car</a>
+    <a href="About.aspx">About Us</a>
+
+    <asp:HyperLink ID="hlAdminDashboard" runat="server" NavigateUrl="~/ManagementDashboard.aspx" Visible="false">Admin Panel</asp:HyperLink>
+    <asp:HyperLink ID="hlStaffDashboard" runat="server" NavigateUrl="~/ManagementDashboard.aspx" Visible="false">Staff Tasklist</asp:HyperLink>
+    <asp:HyperLink ID="hlCustDashboard" runat="server" NavigateUrl="~/CustomerDashboard.aspx" Visible="false">My Bookings</asp:HyperLink>
+
+    <div class="navbar-right">
+        <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="~/Login.aspx">Login</asp:HyperLink>
+        <asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click" Visible="false">Logout</asp:LinkButton>
+    </div>
+</div>
+
+
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="Home.aspx">Home</a></li>
+                        <li><a href="RentACar.aspx">RentaCar</a></li>
+                        <li><a href="About.aspx">About Us</a></li>
+                        <li><a href="Login.aspx">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Short-Term Rentals</a></li>
+                        <li><a href="#">Long-Term Leasing</a></li>
+                        <li><a href="#">Corporate Rentals</a></li>
+                        <li><a href="#">Airport Pickup</a></li>
+                    </ul>
+                </div>
+                
+                
+                
+                
+            </div>
+            
+            <div class="copyright">
+                &copy; <span id="currentYear"></span> Rent A Car. All rights reserved. | 
+                <a href="#" style="color: #4CAF50;">Privacy Policy</a> | 
+                <a href="#" style="color: #4CAF50;">Terms of Service</a>
+            </div>
+        </footer>
+
+    </form>
+    
+    <script>
+        // Set current year in copyright
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
